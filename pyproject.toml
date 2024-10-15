@@ -4,7 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ynabpy"
-version = "0.0.1"
+dynamic = ["version"]
+
 authors = [
     {name="PreciousFood", email="preciousfood84@gmail.com"}
 ]
@@ -16,4 +17,17 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent"
 ]
+dependencies = [
+    "pydantic>=2.9.2",
+    "requests>=2.32.3"
+]
 
+[project.optional-dependencies]
+testing = ["fastapi[standard", "pytest"]
+
+[project.urls]
+Home = "https://github.com/PreciousFood/ynabpy"
+"YNAB API docs" = "https://api.ynab.com"
+
+[tool.setuptools.dynamic]
+version = {attr = "ynab.__version__"}
